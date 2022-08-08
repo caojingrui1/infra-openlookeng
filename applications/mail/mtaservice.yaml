@@ -98,7 +98,8 @@ spec:
             - -c
             - |
               mkdir -p /var/log/exim4
-              chmod 777 /var/log/exim4
+              chown -R Debian-exim:Debian-exim /var/log/exim4
+              chown -R Debian-exim:Debian-exim /etc/exim4
               cp /etc/exim4/passwd.ro /etc/exim4/passwd
               cp /etc/exim4/exim.crt.ro /etc/exim4/exim.crt
               cp /etc/exim4/exim.key.ro /etc/exim4/exim.key
