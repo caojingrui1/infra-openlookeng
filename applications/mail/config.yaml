@@ -1206,7 +1206,6 @@ data:
     MM3_LISTCHK=MM3_HOME/lists/${local_part}.${domain}
   
   00_local_macros: |
-    CHECK_RCPT_SPF = true
     DKIM_CANON = relaxed
     DKIM_SELECTOR = default
     DKIM_DOMAIN = openlookeng.io
