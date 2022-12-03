@@ -3103,7 +3103,6 @@ data:
     import logging
     import smtplib
     import re
-    import copy
 
     from mailman.config import config
     from mailman.interfaces.mta import IMailTransportAgentDelivery

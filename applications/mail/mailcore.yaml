@@ -101,8 +101,8 @@ spec:
             - |
               export DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@mailman-database-0.mail-suit-service.mail.svc.cluster.local/mailmandb
               sed -i "s/charset: us-ascii/charset: utf-8/g" /usr/lib/python3.6/site-packages/mailman/config/schema.cfg;
-              cp /opt/core-debug/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-              chmod +x /usr/local/bin/docker-entrypoint.sh
+              cp /opt/core-debug/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh;
+              chmod +x /usr/local/bin/docker-entrypoint.sh;
               exec docker-entrypoint.sh master --force
       #NOTE: Empty dir can't be used in a production dir. Please upgrade it before using.
       volumes:
