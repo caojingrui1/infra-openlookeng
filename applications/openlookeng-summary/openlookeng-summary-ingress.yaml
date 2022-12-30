@@ -35,7 +35,7 @@ metadata:
       rewrite ^/$                          /en/2022/ redirect;
       rewrite ^/en/2022/agreement_en.html$ /agreement_en.html redirect;
       rewrite ^/en/agreement_en.html$      /agreement_en.html redirect;
-      rewrite ^/zh                         https://summary.mindspore.cn/zh/2022/ redirect;
+      rewrite ^/zh                         https://summary.openlookeng.io/zh/2022/ redirect;
   name: openlookeng-summary-en-ingress
   namespace: openlookeng-summary
 spec:
