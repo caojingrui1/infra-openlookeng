@@ -9,4 +9,4 @@ resources:
 - namespace.yaml
 images:
 - name: swr.cn-north-4.myhuaweicloud.com/opensourceway/openlookeng/summary
-  newTag: v1.0.20221230142211
+  newTag: v1.0.20221230161238
