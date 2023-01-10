@@ -1,5 +1,5 @@
 resources:
-  - config.yaml
+  - exim-configmap.yaml
   - mailcore.yaml
   - mailcoreservice.yaml
   - maildatabase.yaml

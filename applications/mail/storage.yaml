@@ -29,3 +29,17 @@ spec:
       storage: 500Gi
   storageClassName: csi-nas
   volumeMode: Filesystem
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: exim-log-data
+  namespace: mail
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: csi-disk
