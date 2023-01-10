@@ -36,6 +36,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: exim-log-data
   namespace: mail
+  annotations:
+    everest.io/disk-volume-type: SSD
 spec:
   accessModes:
   - ReadWriteOnce
