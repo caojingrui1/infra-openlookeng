@@ -151,6 +151,9 @@ spec:
             limits:
               cpu: 2000m
               memory: 2000Mi
+          volumeMounts:
+          - mountPath: /opt/mailman-web-static
+            name: mailman-web-volume
       #NOTE: Empty dir can't be used in a production dir. Please upgrade it before using.
         - image: swr.cn-north-4.myhuaweicloud.com/opensourceway/common/nginx:latest
           imagePullPolicy: IfNotPresent
