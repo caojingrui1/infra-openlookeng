@@ -1,6 +1,7 @@
----
 apiVersion: v1
-kind: Service
+imagePullSecrets:
+- name: huawei-swr-image-pull-secret
+kind: ServiceAccount
 metadata:
   annotations:
     email: chenzeng765@163.com
@@ -14,30 +15,10 @@ metadata:
     helm.sh/chart: jenkins-1.7.4
   name: jenkins
   namespace: jenkins
-spec:
-  clusterIP: 10.247.191.168
-  externalTrafficPolicy: Cluster
-  ports:
-  - name: http
-    nodePort: 32717
-    port: 80
-    protocol: TCP
-    targetPort: 8080
-  - name: jnlp
-    nodePort: 32718
-    port: 50000
-    protocol: TCP
-    targetPort: 50000
-  selector:
-    app: openlookeng-jenkins
-    app.kubernetes.io/component: jenkins-master
-    app.kubernetes.io/instance: jenkins
-  sessionAffinity: None
-  type: NodePort
 
 ---
-apiVersion: v1
-kind: Service
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
 metadata:
   annotations:
     email: chenzeng765@163.com
@@ -49,18 +30,39 @@ metadata:
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: jenkins
     helm.sh/chart: jenkins-1.7.4
-  name: jenkins-agent
+  name: jenkins-schedule-agents
   namespace: jenkins
-spec:
-  clusterIP: 10.247.5.80
-  ports:
-  - name: slavelistener
-    port: 50000
-    protocol: TCP
-    targetPort: 50000
-  selector:
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/exec
+  - pods/log
+  verbs:
+  - '*'
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    email: chenzeng765@163.com
+    owner: chenzeng
+  labels:
     app: openlookeng-jenkins
     app.kubernetes.io/component: jenkins-master
-    app.kubernetes.io/instance: jenkins
-  sessionAffinity: None
-  type: ClusterIP
+    app.kubernetes.io/instance: openlookeng-jenkins
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: jenkins
+    helm.sh/chart: jenkins-1.7.4
+  name: jenkins-schedule-agents
+  namespace: jenkins
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: jenkins-schedule-agents
+subjects:
+- kind: ServiceAccount
+  name: jenkins
+  namespace: jenkins
