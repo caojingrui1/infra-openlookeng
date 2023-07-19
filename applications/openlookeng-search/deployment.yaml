@@ -87,7 +87,7 @@ spec:
             secretKeyRef:
               name: search-secrets
               key: xarmor_app_token
-         - name: XARMOR_TENANT_ID
+        - name: XARMOR_TENANT_ID
           valueFrom:
             secretKeyRef:
               name: search-secrets
