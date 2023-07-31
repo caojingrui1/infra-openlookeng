@@ -92,6 +92,8 @@ spec:
             secretKeyRef:
               name: search-secrets
               key: xarmor_tenant_id 
+        - name: APPLICATION_PATH
+          value: "/EaseSearch/target/classes/applicaiton.yml"
         resources:
           requests:
             cpu: 1000m
