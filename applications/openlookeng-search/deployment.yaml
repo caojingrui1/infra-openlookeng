@@ -72,22 +72,22 @@ spec:
             secretKeyRef:
               name: search-secrets
               key: tespassword
-        - name: XARMOR_BACKEND_URL
+        - name: X_ARMOR_BACKEND_BACKEND_URL
           valueFrom:
             secretKeyRef:
               name: search-secrets
               key: xarmor_backend_url 
-        - name: XARMOR_APP_ID
+        - name: X_ARMOR_BACKEND_APP_ID
           valueFrom:
             secretKeyRef:
               name: search-secrets
               key: xarmor_app_id 
-        - name: XARMOR_APP_TOKEN
+        - name: X_ARMOR_BACKEND_APP_TOKEN
           valueFrom:
             secretKeyRef:
               name: search-secrets
               key: xarmor_app_token
-        - name: XARMOR_TENANT_ID
+        - name: X_ARMOR_BACKEND_TENANT_ID
           valueFrom:
             secretKeyRef:
               name: search-secrets
